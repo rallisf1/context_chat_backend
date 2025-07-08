@@ -39,6 +39,7 @@ jobs:
               - 'main_em.py'
               - 'config.cpu.yaml'
               - 'config.gpu.yaml'
+              - 'config.remote.yaml'
               - 'context_chat_backend/**'
               - 'appinfo/**'
               - 'example.env'

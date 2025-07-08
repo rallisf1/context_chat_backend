@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
 import logging
+import os
 from time import sleep
 from typing import Literal, TypedDict
 
@@ -39,6 +40,10 @@ class NetworkEmbeddings(Embeddings, BaseModel):
 
 	def _get_embedding(self, input_: str | list[str], try_: int = 3) -> list[float] | list[list[float]]:
 		emconf = self.app_config.embedding
+		if len(emconf.host) == 0:
+			emconf.protocol = os.environ["EMBED_PROTOCOL"]
+			emconf.host = os.environ["EMBED_HOST"]
+			emconf.port = int(os.environ["EMBED_PORT"])
 
 		lengths = [len(text) for text in (input_ if isinstance(input_, list) else [input_])]
 		logger.info(

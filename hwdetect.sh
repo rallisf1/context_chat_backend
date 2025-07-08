@@ -40,6 +40,8 @@ if [ "$1" = "config" ]; then
 	if [ -n "$2" ] && ([ "$2" = "CPU" ] || [ "$2" = "CUDA" ]); then
 		echo "Using provided hardware: $2"
 		accel="$2"
+	else
+		accel="REMOTE"
 	fi
 
 	if [ -f "$APP_PERSISTENT_STORAGE/config.yaml" ]; then
@@ -50,8 +52,10 @@ if [ "$1" = "config" ]; then
 	echo "Copying config file to the persistent storage..."
 	if [ "$accel" = "CUDA" ]; then
 		cp "config.gpu.yaml" "$APP_PERSISTENT_STORAGE/config.yaml"
-	else
+	elif [ "$accel" = "CPU" ]; then
 		cp "config.cpu.yaml" "$APP_PERSISTENT_STORAGE/config.yaml"
+	else
+		cp "config.remote.yaml" "$APP_PERSISTENT_STORAGE/config.yaml"
 	fi
 
 	exit 0

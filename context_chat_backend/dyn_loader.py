@@ -70,6 +70,11 @@ class EmbeddingModelLoader(Loader):
 				env=os.environ,
 			)
 			pid.value = proc.pid
+		else:
+			if len(emconf.host) == 0:
+				emconf.protocol = os.environ["EMBED_PROTOCOL"]
+				emconf.host = os.environ["EMBED_HOST"]
+				emconf.port = int(os.environ["EMBED_PORT"])
 
 		last_resp, last_exc = None, None
 		# poll for heartbeat
