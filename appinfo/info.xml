@@ -43,6 +43,21 @@ Setup background job workers as described here: https://docs.nextcloud.com/serve
 				<display-name>PostgreSQL URI</display-name>
 				<description>A URI in the form of "postgresql+psycopg://pguser:pgpass@localhost:5432/nextcloud" that supports the pgvector extension. If this is set, no separate internal database will be setup for vector storage. This should be accessible by the ex-app container nc_app_context_chat_backend.</description>
 			</variable>
+			<variable>
+				<name>EMBED_PROTOCOL</name>
+				<display-name>Embeddings Model URI Protocol</display-name>
+				<description>Either `http` or `https`. Used for remote inference. Usually it's the same as your OpenAI integration.</description>
+			</variable>
+			<variable>
+				<name>EMBED_HOST</name>
+				<display-name>Embeddings Model URI Domain</display-name>
+				<description>The domain name of the AI server. Used for remote inference. Usually it's the same as your OpenAI integration.</description>
+			</variable>
+			<variable>
+				<name>EMBED_PORT</name>
+				<display-name>Embeddings Model URI Port</display-name>
+				<description>The TCP port of the AI server. Used for remote inference. Usually it's the same as your OpenAI integration (443 for https).</description>
+			</variable>
 		</environment-variables>
 	</external-app>
 </info>

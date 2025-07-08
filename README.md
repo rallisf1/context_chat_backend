@@ -40,7 +40,7 @@ Install the given apps for Context Chat to work as desired **in the given order*
 3. `pip install --upgrade pip setuptools wheel`
 4. Install requirements `pip install -r requirements.txt`
 5. Copy example.env to .env and fill in the variables
-6. Ensure the config file at `persistent_storage/config.yaml` points to the correct config file (cpu vs gpu). If you're unsure, delete it. It will be recreated upon launching the application. The default is to point to the gpu config.
+6. Ensure the config file at `persistent_storage/config.yaml` points to the correct config file (cpu/gpu/remote). If you're unsure, delete it. It will be recreated upon launching the application. The default is to point to the gpu config.
 7. Configure `persistent_storage/config.yaml` for the model name, model type and its parameters (which also includes model file's path and model id as per requirements, see example config)
 8. Setup postgresql externally or use `dockerfile_scripts/pgsql/install.sh` to install it on a Debian-family system.
 9. Set the env var `EXTERNAL_DB` or the `connection` key in the `pgvector` config to the postgresql connection string if you're using an external database.
