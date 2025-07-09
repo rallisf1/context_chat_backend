@@ -6,6 +6,8 @@
 set -e
 
 accel=$COMPUTE_DEVICE
+arch=$(uname -m)
+
 if [ "$accel" = "ROCM" ]; then
 	accel="CUDA"
 fi
@@ -25,7 +27,7 @@ if [ -z "$accel" ]; then
 fi
 
 # llama.cpp fix for cpu in docker
-if [ "${AA_DOCKER_ENV:-0}" = "1" ] && [ "$accel" = "CPU" ]; then
+if [ "${AA_DOCKER_ENV:-0}" = "1" ] && [ "$accel" = "CPU" ] && [ "$arch" = "x86_64" ]; then
 	ln -sf /usr/local/cuda/compat/libcuda.so.1 /lib/x86_64-linux-gnu/
 fi
 

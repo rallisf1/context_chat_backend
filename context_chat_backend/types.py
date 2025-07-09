@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
 from pydantic import BaseModel
+from typing import Optional
 
 __all__ = [
 	'EmbeddingException',
@@ -13,12 +14,12 @@ __all__ = [
 
 class TEmbedding(BaseModel):
 	protocol: str
-	host: str
+	host: Optional[str] = None
 	port: int
 	workers: int
 	offload_after_mins: int
 	request_timeout: int
-	llama: dict
+	llama: Optional[dict] = None
 
 
 class TConfig(BaseModel):
