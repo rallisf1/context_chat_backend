@@ -17,7 +17,6 @@ vectordb:
 
 embedding:
   protocol: http
-  host: 
   port: 5000
   workers: 0
   offload_after_mins: 15 # in minutes
